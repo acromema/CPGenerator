@@ -21,7 +21,7 @@ namespace Izheng
         public string Problem { get; set; }
         private readonly string[][] opera = new string[3][];
         private int operaNum;
-        public int result;
+        public string Result { get; set; }
         public int Mod { get; set; } = 0;
         private Queue<string> valueQueue = new Queue<string>();
         private Stack<string> operaStack = new Stack<string>();
@@ -36,17 +36,26 @@ namespace Izheng
         private void GetOperaList()
         {
             //GetOperaNum();
+            int multNum = 0;
             for (int i = 0; i < operaNum; i++)
             {
+
                 string temp = opera[Mod][rand.Next(opera[Mod].Length)];
+                if (multNum == 2 && temp == "*")
+                {
+                    i--;
+                    continue;
+                }
+                if (temp == "*")
+                {
+                    multNum++;
+                }
                 if (i > 0 && operaList[i - 1] == "/" && temp == "/")
                 {
                     i--;
+                    continue;
                 }
-                else
-                {
-                    operaList[i] = temp;
-                }
+                operaList[i] = temp;
             }
         }
 
@@ -183,7 +192,7 @@ namespace Izheng
                     numStack.Push(GetOptionValue(operation, numStack.Pop(), numStack.Pop()));
                 }
             }
-            result = numStack.Pop();
+            Result = numStack.Pop().ToString();
         }
 
         private int GetOptionLevel(string operation)
@@ -244,6 +253,7 @@ namespace Izheng
         {
             return Regex.IsMatch(value, @"^\d+$");
         }
+
         private int GetRandomSeed()
         {
             byte[] bytes = new byte[10];
