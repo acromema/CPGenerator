@@ -14,8 +14,8 @@ namespace Izheng
             Problem = "";
             rand = new Random(GetRandomSeed());
             opera[0] = new string[4] { "+", "-", "*", "/" };
-            //opera[1] = new string[5] { "+", "-", "*", "/" ,"**"};
-            //opera[2] = new string[5] { "+", "-", "*", "/" ,"^"};
+            opera[1] = new string[5] { "+", "-", "*", "/" ,"**"};
+            opera[2] = new string[5] { "+", "-", "*", "/" ,"^"};
         }
         private readonly Random rand;
         public string Problem { get; set; }
@@ -37,10 +37,20 @@ namespace Izheng
         {
             //GetOperaNum();
             int multNum = 0;
+            int powNum = 0;
             for (int i = 0; i < operaNum; i++)
             {
 
                 string temp = opera[Mod][rand.Next(opera[Mod].Length)];
+                if(powNum == 1 && (temp == "**" || temp == "^"))
+                {
+                    i--;
+                    continue;
+                }
+                if(temp == "**" || temp == "^")
+                {
+                    powNum++;
+                }
                 if (multNum == 2 && temp == "*")
                 {
                     i--;
@@ -56,6 +66,20 @@ namespace Izheng
                     continue;
                 }
                 operaList[i] = temp;
+            }
+            if(powNum ==1)
+            {
+                for (int i = 0; i < operaNum; i++)
+                {
+                    if(operaList[i] == "*")
+                    {
+                        operaList[i] = "+";
+                    }
+                    if (operaList[i] == "/")
+                    {
+                        operaList[i] = "-";
+                    }
+                }
             }
         }
 
@@ -115,11 +139,27 @@ namespace Izheng
                     if (i == 0)
                     {
                         numList[i] = rand.Next(31);
-                        numList[i + 1] = rand.Next(31);
+                    }
+                    numList[i + 1] = rand.Next(31);
+                }
+                else if(operaList[i] == "**"||operaList[i]=="^")
+                {
+                    numList[i] = rand.Next(21);
+                    if(numList[i]==0)
+                    {
+                        numList[i+1] = rand.Next(1,101);
+                    }
+                    else if (numList[i]==0)
+                    {
+                        numList[i + 1] = rand.Next(101);
+                    }
+                    else if(numList[i]<=5)
+                    {
+                        numList[i + 1] = rand.Next(6);
                     }
                     else
                     {
-                        numList[i + 1] = rand.Next(31);
+                        numList[i + 1] = rand.Next(3);
                     }
                 }
             }
@@ -212,6 +252,12 @@ namespace Izheng
                 case "/":
                     result = 2;
                     break;
+                case "**":
+                    result = 3;
+                    break;
+                case "^":
+                    result = 3;
+                    break;
             }
             return result;
         }
@@ -233,13 +279,19 @@ namespace Izheng
                 case "/":
                     result = a / b;
                     break;
+                case "**":
+                    result = int.Parse(Math.Pow(a,b).ToString());
+                    break;
+                case "^":
+                    result = int.Parse(Math.Pow(a, b).ToString());
+                    break;
             }
             return result;
         }
 
         private bool IsOperator(string str)
         {
-            if (str == "+" || str == "-" || str == "*" || str == "/")
+            if (str == "+" || str == "-" || str == "*" || str == "/" || str == "**" || str == "^")
             {
                 return true;
             }
