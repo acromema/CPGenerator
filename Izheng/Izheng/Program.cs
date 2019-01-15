@@ -15,13 +15,8 @@ namespace Izheng
                 Mod = 0
             };
             problem.GenerateProblem();
-            for (int i = 0; i < 1000; i++)
-            {
-                problem.GenerateProblem();
-                Console.WriteLine(problem.Problem);
-            }
-            
-            
+            Console.WriteLine(problem.Problem);
+            Console.WriteLine(problem.result);
         }
     }
 }
