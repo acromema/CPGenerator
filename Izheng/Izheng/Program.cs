@@ -52,12 +52,16 @@ namespace Izheng
                 string fileName = "小学生难题1000道.txt";
                 string newPath = AppDomain.CurrentDomain.BaseDirectory + fileName;
                 StreamWriter streamWriter = new StreamWriter(newPath, false, Encoding.Default);
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     problem.GenerateProblem();
+                    streamWriter.WriteLine(i);
                     streamWriter.WriteLine(problem.Problem);
+                    //streamWriter.WriteLine(i);
                     //Console.WriteLine(problem.Result);
                 }
+                streamWriter.Flush();
+                streamWriter.Close();
                 Console.WriteLine("导出成功！");
             }
             else if (str == "2")

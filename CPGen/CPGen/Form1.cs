@@ -12,9 +12,23 @@ namespace CPGen
 {
     public partial class Form1 : Form
     {
+        public static Form f;
         public Form1()
         {
             InitializeComponent();
+            f = this;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Output_Click(object sender, EventArgs e)
+        {
+            OutputForm form = new OutputForm();
+            form.Show();
+            this.Hide();
         }
     }
 }
