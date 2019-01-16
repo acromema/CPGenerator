@@ -11,7 +11,6 @@ namespace Izheng
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(int.Parse(Math.Pow(8, 0).ToString()));
             IntGen problem = new IntGen
             {
                 Mod = 0
