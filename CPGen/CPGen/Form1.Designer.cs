@@ -54,6 +54,7 @@
             this.btn_Test.TabIndex = 1;
             this.btn_Test.Text = "在线答题";
             this.btn_Test.UseVisualStyleBackColor = true;
+            this.btn_Test.Click += new System.EventHandler(this.Btn_Test_Click);
             // 
             // label1
             // 

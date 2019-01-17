@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnsForm.Designer.cs">
+      <DependentUpon>AnsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnsSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnsSystem.Designer.cs">
+      <DependentUpon>AnsSystem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +74,12 @@
     <Compile Include="PFGen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnsForm.resx">
+      <DependentUpon>AnsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnsSystem.resx">
+      <DependentUpon>AnsSystem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

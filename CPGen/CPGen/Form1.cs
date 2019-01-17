@@ -30,5 +30,12 @@ namespace CPGen
             form.Show();
             this.Hide();
         }
+
+        private void Btn_Test_Click(object sender, EventArgs e)
+        {
+            AnsSystem form = new AnsSystem();
+            form.Show();
+            this.Hide();
+        }
     }
 }
