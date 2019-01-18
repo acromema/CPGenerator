@@ -26,6 +26,7 @@ namespace CPGen
             type = AnsSystem.ans.cmb_Erabu.SelectedIndex;
             lb_Problem.Text = "";
             btn_Save.Enabled = false;
+            txb_Answer.MaxLength = 10;
         }
         int timeCount = 20;
         IntGen problem1 = new IntGen();
@@ -52,9 +53,7 @@ namespace CPGen
             timeCount--;
             if (timeCount == -1)
             {
-                string show = lb_Problem.Text + " = " + txb_Answer.Text;
-                show += "   错误，正确答案为" + answer;
-                listBox1.Items.Add(show);
+                Jugde();
                 timeCount = 20;
                 if (probCount == num)
                 {
@@ -122,6 +121,30 @@ namespace CPGen
 
         private void Btn_Save_Click(object sender, EventArgs e)
         {
+            if(txb_Answer.Text == "")
+            {
+                MessageBox.Show("输入不能为空！");
+            }
+            else
+            {
+                Jugde();
+                timeCount = 20;
+                if (probCount == num)
+                {
+                    this.timer1.Stop();
+                    MessageBox.Show("你一共答对了" + correctCount.ToString() + "/" + num.ToString() + "道题，总分" + 100 / num * correctCount + "分");
+                    this.btn_Save.Enabled = false;
+                }
+                else
+                {
+                    GenProb();
+                }
+                txb_Answer.Text = "";
+            }
+        }
+
+        private void Jugde()
+        {
             string show = lb_Problem.Text + " = " + txb_Answer.Text;
             if (answer == txb_Answer.Text)
             {
@@ -133,18 +156,23 @@ namespace CPGen
                 show += "   错误，正确答案为" + answer;
             }
             listBox1.Items.Add(show);
-            timeCount = 20;
-            if (probCount == num)
+        }
+
+        private void Txb_Answer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b')
             {
-                this.timer1.Stop();
-                MessageBox.Show("你一共答对了" + correctCount.ToString() + "/" + num.ToString() + "道题，总分" + 100 / num * correctCount + "分");
-                this.btn_Save.Enabled = false;
+                if(e.KeyChar != '/')
+                {
+                    if(e.KeyChar != '-')
+                    {
+                        if ((e.KeyChar < '0') || (e.KeyChar > '9'))
+                        {
+                            e.Handled = true;
+                        }
+                    }
+                }  
             }
-            else
-            {
-                GenProb();
-            }
-            txb_Answer.Text = "";
         }
     }
 }

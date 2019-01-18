@@ -153,7 +153,7 @@ namespace Izheng
                     {
                         numList[i + 1] = rand.Next(101);
                     }
-                    else if(numList[i]<=5)
+                    else if(numList[i]<=4)
                     {
                         numList[i + 1] = rand.Next(6);
                     }

@@ -102,6 +102,7 @@
             this.txb_Answer.Name = "txb_Answer";
             this.txb_Answer.Size = new System.Drawing.Size(100, 21);
             this.txb_Answer.TabIndex = 5;
+            this.txb_Answer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txb_Answer_KeyPress);
             // 
             // btn_Save
             // 
