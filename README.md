@@ -6,7 +6,31 @@
 - 随机出题
 - 在线倒计时答题
 - 答案判断与解答
-
+### 文件目录
+.
+├── CPGen
+│   ├── CPGen                       
+│   │   ├── UIBIN                   存放可执行文件
+│   │   ├── AnsForm.Designer.cs     答题界面设计预览
+│   │   ├── AnsForm.cs              答题界面
+│   │   ├── AnsSystem.Designer.cs   大卷生成
+│   │   ├── AnsSystem.cs            题目的条件组合选择界面
+│   │   ├── CPGen.csproj            项目文件
+│   │   ├── Form1.Designer.cs       主界面设计预览
+│   │   ├── Form1.cs                主界面
+│   │   ├── IntGen.cs               整数题目生成
+│   │   ├── OutputForm.Designer.cs  输出系统界面设计预览
+│   │   ├── OutputForm.cs           输出系统界面
+│   │   ├── PFGen.cs                真分数题目生成
+│   │   └── Program.cs              Main函数            
+│   └── CPGen.sln                   
+├── Izheng                          分工完成的整数部分
+├── PFG                             分工完成的真分数部分
+├── LICENSE
+├── README.md
+├── .git
+├── .gitattributes
+└── .gitignore
 ### 版本更新详情
 v1.0 初步完成了生成四则运算式的部分  
 v2.0 整数四则运算第一阶段结束。  
